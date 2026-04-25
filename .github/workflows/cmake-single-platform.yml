@@ -22,11 +22,11 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Update Ubuntu
-      run: sudo apt-get update -y
+    #- name: Update Ubuntu
+    #  run: sudo apt-get update -y
 
-    - name: Upgrade Ubuntu
-      run: sudo apt-get upgrade -y
+    #- name: Upgrade Ubuntu
+    #  run: sudo apt-get upgrade -y
 
     - name: Install catch2
       run: sudo apt-get install -y catch2
