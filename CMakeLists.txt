@@ -1,8 +1,11 @@
 cmake_minimum_required(VERSION 3.30)
 project(GPGenetic)
 
+file(GLOB_RECURSE lib_SOURCES "src/*.cpp")
+file(GLOB_RECURSE test_SOURCES "test/*.cpp")
+
 add_library(gpgenetic
-    src/*.cpp
+    lib_SOURCES
 )
 
 target_include_directories(gpgenetic
