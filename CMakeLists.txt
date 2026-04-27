@@ -5,7 +5,7 @@ file(GLOB_RECURSE lib_SOURCES "src/*.cpp")
 file(GLOB_RECURSE test_SOURCES "test/*.cpp")
 
 add_library(gpgenetic
-    lib_SOURCES
+    ${lib_SOURCES}
 )
 
 target_include_directories(gpgenetic
