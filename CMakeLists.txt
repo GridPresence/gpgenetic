@@ -21,7 +21,7 @@ target_include_directories(gpgenetic
 install (TARGETS gpgenetic DESTINATION lib)
 
 add_executable(gpgenetic-test ${test_SOURCES})
-target_link_libraries(hello-catch2-cmake-test gpgenetic Catch2::Catch2)
+target_link_libraries(gpgenetic-test gpgenetic Catch2::Catch2)
 
 include(CTest)
 include(Catch)
