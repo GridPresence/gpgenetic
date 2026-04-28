@@ -11,4 +11,6 @@ class Gene
     public:
         Gene(int length);
         ~Gene();
+
+        int length();
 };

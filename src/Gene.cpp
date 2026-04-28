@@ -11,3 +11,8 @@ Gene::~Gene()
     delete [] m_dna;
     m_dna = nullptr;
 };
+
+int Gene::length()
+{
+    return m_length;
+};
