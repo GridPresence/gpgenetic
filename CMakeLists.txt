@@ -19,6 +19,8 @@ target_include_directories(gpgenetic
 )
 
 install (TARGETS gpgenetic DESTINATION lib)
+install(DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+
 
 add_executable(gpgenetic-test ${test_SOURCES})
 target_link_libraries(gpgenetic-test PRIVATE Catch2::Catch2WithMain)
