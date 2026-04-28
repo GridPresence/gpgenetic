@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.30)
 project(GPGenetic)
 
-find_package(Catch2 REQUIRED)
+find_package(Catch2 3 REQUIRED)
 
 file(GLOB_RECURSE lib_SOURCES "src/*.cpp")
 file(GLOB_RECURSE test_SOURCES "test/*.cpp")
@@ -21,7 +21,7 @@ target_include_directories(gpgenetic
 install (TARGETS gpgenetic DESTINATION lib)
 
 add_executable(gpgenetic-test ${test_SOURCES})
-target_link_libraries(gpgenetic-test gpgenetic Catch2::Catch2)
+target_link_libraries(gpgenetic-test PRIVATE Catch2::Catch2WithMain)
 
 include(CTest)
 include(Catch)
