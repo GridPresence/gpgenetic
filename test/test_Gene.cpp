@@ -2,7 +2,8 @@
 
 #include "Gene.hpp"
 
-#define CWIDTH sizeof(unsigned short int)
+#define LOCBYTE 8
+#define CWIDTH sizeof(unsigned short int) * LOCBYTE
 #define CLEN 5
 #define GLEN CWIDTH *CLEN
 
