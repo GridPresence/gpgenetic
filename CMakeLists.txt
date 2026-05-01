@@ -10,6 +10,9 @@ include(GNUInstallDirs)
 file(GLOB_RECURSE lib_SOURCES "src/*.cpp")
 file(GLOB_RECURSE test_SOURCES "test/*.cpp")
 
+include_directories("${CMAKE_SOURCE_DIR}/include")
+
+
 add_library(gpgenetic
     ${lib_SOURCES}
 )
