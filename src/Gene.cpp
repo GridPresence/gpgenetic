@@ -2,13 +2,12 @@
 
 Gene::Gene(int length) : m_length(length)
 {
-    m_dna = new vector<int>[m_length];
+    m_dna.resize(m_length);
 };
 
 Gene::~Gene()
 {
-    delete[] m_dna;
-    m_dna = nullptr;
+    m_dna.clear();
 };
 
 int Gene::length()
@@ -16,11 +15,11 @@ int Gene::length()
     return m_length;
 };
 
-void Gene::clear()
+void Gene::flush()
 {
     for (int i = 0; i < m_length; i++)
     {
-        this->unset(i);
+        unset(i);
     }
 };
 
@@ -28,7 +27,7 @@ void Gene::fill()
 {
     for (int i = 0; i < m_length; i++)
     {
-        this->set(i);
+        set(i);
     }
 };
 
@@ -42,7 +41,7 @@ void Gene::decode(unsigned short int (&targ)[5])
         word = 0;
         for (int j = 0; j < 16; j++)
         {
-            bit = (bool)(m_dna->at(16 * i + j));
+            bit = (bool)(m_dna.at(16 * i + j));
             word = bit << 1;
         }
         targ[i] = word;

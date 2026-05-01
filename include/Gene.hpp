@@ -5,7 +5,7 @@ using namespace std;
 class Gene
 {
 private:
-    vector<int> *m_dna = nullptr;
+    vector<int> m_dna;
     int m_length = 0;
 
 public:
@@ -19,21 +19,21 @@ public:
     void unset(int idx);
     void toggle(int idx);
 
-    void clear();
+    void flush();
     void fill();
 };
 
 inline void Gene::set(int idx)
 {
-    m_dna->at(idx) = 1;
+    m_dna.at(idx) = 1;
 };
 
 inline void Gene::unset(int idx)
 {
-    m_dna->at(idx) = 0;
+    m_dna.at(idx) = 0;
 };
 
 inline void Gene::toggle(int idx)
 {
-    m_dna->at(idx) = ~(m_dna->at(idx));
+    m_dna.at(idx) = ~(m_dna.at(idx));
 };
