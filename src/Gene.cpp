@@ -34,15 +34,13 @@ void Gene::fill()
 void Gene::decode(unsigned short int (&targ)[5])
 {
     unsigned short int word;
-    bool bit;
 
     for (int i = 0; i < 5; i++)
     {
         word = 0;
         for (int j = 0; j < 16; j++)
         {
-            bit = (bool)(m_dna.at(16 * i + j));
-            word = bit << 1;
+            word = (word << 1) | m_dna[16 * i + j];
         }
         targ[i] = word;
     }
