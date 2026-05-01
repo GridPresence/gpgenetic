@@ -20,7 +20,7 @@ TEST_CASE("Basic Gene clear", "[Gene]")
     Gene testgene(GLEN);
     unsigned short int vals[CLEN];
 
-    testgene.clear();
+    testgene.flush();
     testgene.decode(vals);
     for (int i = 0; i < CLEN; i++)
     {
