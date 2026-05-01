@@ -24,8 +24,8 @@ target_include_directories(gpgenetic
 
 install (TARGETS gpgenetic DESTINATION lib)
 
-set_target_properties(gpgenetic PROPERTIES PUBLIC_HEADER Gene.hpp)
-install(TARGETS include/ PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+# set_target_properties(gpgenetic PROPERTIES PUBLIC_HEADER Gene.hpp)
+# install(TARGETS include/ PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 
 
 add_executable(gpgenetic-test ${test_SOURCES})
