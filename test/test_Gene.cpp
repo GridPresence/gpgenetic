@@ -9,9 +9,9 @@
 TEST_CASE("Basic Gene operations", "[Gene]")
 {
     Gene testgene(GLEN);
-    unsigned short int vals[CLEN]
+    unsigned short int vals[CLEN];
 
-        REQUIRE(testgene.length() == 80);
+    REQUIRE(testgene.length() == 80);
 
     testgene.decode(vals);
     for (int i = 0; i < CLEN; i++)
