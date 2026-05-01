@@ -14,9 +14,16 @@ TEST_CASE("Basic Gene operations", "[Gene]")
 
     REQUIRE(testgene.length() == 80);
 
+    testgene.clear();
     testgene.decode(vals);
     for (int i = 0; i < CLEN; i++)
     {
         REQUIRE(vals[i] == 0);
+    }
+    testgene.fill();
+    testgene.decode(vals);
+    for (int i = 0; i < CLEN; i++)
+    {
+        REQUIRE(vals[i] == 65535);
     }
 };

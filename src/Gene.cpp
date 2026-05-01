@@ -16,10 +16,35 @@ int Gene::length()
     return m_length;
 };
 
+void Gene::clear()
+{
+    for (int i = 0; i < m_length; i++)
+    {
+        this->unset(i);
+    }
+};
+
+void Gene::fill()
+{
+    for (int i = 0; i < m_length; i++)
+    {
+        this->set(i);
+    }
+};
+
 void Gene::decode(unsigned short int (&targ)[5])
 {
+    unsigned short int word;
+    bool bit;
+
     for (int i = 0; i < 5; i++)
     {
-        targ[i] = i;
+        word = 0;
+        for (int j = 0; j < 16; j++)
+        {
+            bit = (bool)(m_dna->at(16 * i + j));
+            word = bit << 1;
+        }
+        targ[i] = word;
     }
 };
