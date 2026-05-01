@@ -2,9 +2,20 @@
 
 #include "Gene.hpp"
 
-TEST_CASE("simple test case retrieving the correct length of the Gene", "[Gene]")
-{
-    Gene testgene(80);
+#define CWIDTH sizeof(unsigned short int)
+#define CLEN 5
+#define GLEN CWIDTH *CLEN
 
-    REQUIRE(testgene.length() == 80);
+TEST_CASE("Basic Gene operations", "[Gene]")
+{
+    Gene testgene(GLEN);
+    unsigned short int vals[CLEN]
+
+        REQUIRE(testgene.length() == 80);
+
+    testgene.decode(vals);
+    for (int i = 0; i < CLEN; i++)
+    {
+        REQUIRE(vals[i] == 0);
+    }
 };
