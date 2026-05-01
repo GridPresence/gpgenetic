@@ -32,6 +32,6 @@ install (TARGETS gpgenetic DESTINATION lib)
 
 
 add_executable(gpgenetic-test ${test_SOURCES})
-target_link_libraries(gpgenetic-test PRIVATE Catch2::Catch2WithMain)
+target_link_libraries(gpgenetic-test gpgenetic PRIVATE Catch2::Catch2WithMain)
 
 catch_discover_tests(gpgenetic-test)
