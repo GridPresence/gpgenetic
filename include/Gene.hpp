@@ -35,5 +35,5 @@ inline void Gene::unset(int idx)
 
 inline void Gene::toggle(int idx)
 {
-    m_dna.at(idx) = ~(m_dna.at(idx));
+    m_dna[idx] = m_dna[idx] ^ 0x0001;
 };
