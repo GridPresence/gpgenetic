@@ -63,7 +63,7 @@ TEST_CASE("Bitwise Gene manipulations", "[Gene]")
         testgene.decode(vals);
         for (int i = 0; i < CLEN; i++)
         {
-            cout << i << " - " << vals[i] << endln;
+            cout << i << " - " << vals[i] << "\n";
         }
         for (int i = 0; i < CLEN; i++)
         {
