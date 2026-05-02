@@ -1,4 +1,5 @@
 #include <catch2/catch_test_macros.hpp>
+#include <iostream>
 
 #include "Gene.hpp"
 
@@ -62,7 +63,11 @@ TEST_CASE("Bitwise Gene manipulations", "[Gene]")
         testgene.decode(vals);
         for (int i = 0; i < CLEN; i++)
         {
-            REQUIRE(vals[i] == i + 1);
+            cout << i << " - " << vals[i] << endln;
+        }
+        for (int i = 0; i < CLEN; i++)
+        {
+            REQUIRE(vals[i] == (i + 1));
         }
     }
 };
