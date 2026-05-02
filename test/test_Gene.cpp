@@ -100,4 +100,59 @@ TEST_CASE("Bitwise Gene manipulations", "[Gene]")
             REQUIRE(vals[i] == 0x5555);
         }
     }
+
+    SECTION("Second toggle check", "[Gene]")
+    {
+        testgene.flush();
+        for (int m = 0; m < testgene.length(); m++)
+        {
+            if (m % 2 == 1)
+            {
+                testgene.toggle(m);
+            }
+        }
+        testgene.decode(vals);
+        for (int i = 0; i < CLEN; i++)
+        {
+            cout << i << " - " << vals[i] << "\n";
+        }
+        for (int i = 0; i < CLEN; i++)
+        {
+            REQUIRE(vals[i] == 0xaaaa);
+        }
+    }
+
+    SECTION("Third toggle check", "[Gene]")
+    {
+        testgene.flush();
+        for (int m = 0; m < testgene.length(); m++)
+        {
+            if (m % 2 == 1)
+            {
+                testgene.toggle(m);
+            }
+        }
+        testgene.decode(vals);
+        for (int i = 0; i < CLEN; i++)
+        {
+            cout << i << " - " << vals[i] << "\n";
+        }
+        for (int i = 0; i < CLEN; i++)
+        {
+            REQUIRE(vals[i] == 0xaaaa);
+        }
+        for (int m = 0; m < testgene.length(); m++)
+        {
+            testgene.toggle(m);
+        }
+        testgene.decode(vals);
+        for (int i = 0; i < CLEN; i++)
+        {
+            cout << i << " - " << vals[i] << "\n";
+        }
+        for (int i = 0; i < CLEN; i++)
+        {
+            REQUIRE(vals[i] == 0x5555);
+        }
+    }
 };
