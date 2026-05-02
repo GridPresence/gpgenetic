@@ -62,6 +62,16 @@ TEST_CASE("Bitwise Gene manipulations", "[Gene]")
         }
         // 1
         testgene.set(0);
+        // 2
+        testgene.set(17);
+        // 3
+        testgene.set(32);
+        testgene.set(33);
+        // 4
+        testgene.set(50);
+        // 5
+        testgene.set(64);
+        testgene.set(66);
 
         testgene.decode(vals);
         for (int i = 0; i < CLEN; i++)
@@ -70,7 +80,7 @@ TEST_CASE("Bitwise Gene manipulations", "[Gene]")
         }
         for (int i = 0; i < CLEN; i++)
         {
-            REQUIRE(vals[0] == 1);
+            REQUIRE(vals[0] == (i + 1));
         }
     }
 };
