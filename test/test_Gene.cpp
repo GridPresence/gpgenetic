@@ -24,6 +24,10 @@ TEST_CASE("Basic Gene full manipulations", "[Gene]")
         testgene.decode(vals);
         for (int i = 0; i < CLEN; i++)
         {
+            cout << i << " - " << vals[i] << "\n";
+        }
+        for (int i = 0; i < CLEN; i++)
+        {
             REQUIRE(vals[i] == 0);
         }
     }
@@ -32,6 +36,10 @@ TEST_CASE("Basic Gene full manipulations", "[Gene]")
     {
         testgene.fill();
         testgene.decode(vals);
+        for (int i = 0; i < CLEN; i++)
+        {
+            cout << i << " - " << vals[i] << "\n";
+        }
         for (int i = 0; i < CLEN; i++)
         {
             REQUIRE(vals[i] == 65535);
