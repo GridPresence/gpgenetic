@@ -24,10 +24,6 @@ TEST_CASE("Basic Gene full manipulations", "[Gene]")
         testgene.decode(vals);
         for (int i = 0; i < CLEN; i++)
         {
-            cout << i << " - " << vals[i] << "\n";
-        }
-        for (int i = 0; i < CLEN; i++)
-        {
             REQUIRE(vals[i] == 0);
         }
     }
@@ -36,10 +32,6 @@ TEST_CASE("Basic Gene full manipulations", "[Gene]")
     {
         testgene.fill();
         testgene.decode(vals);
-        for (int i = 0; i < CLEN; i++)
-        {
-            cout << i << " - " << vals[i] << "\n";
-        }
         for (int i = 0; i < CLEN; i++)
         {
             REQUIRE(vals[i] == 65535);
@@ -72,15 +64,11 @@ TEST_CASE("Bitwise Gene manipulations", "[Gene]")
         testgene.decode(vals);
         for (int i = 0; i < CLEN; i++)
         {
-            cout << i << " - " << vals[i] << "\n";
-        }
-        for (int i = 0; i < CLEN; i++)
-        {
             REQUIRE(vals[i] == (i + 1));
         }
     }
 
-    SECTION("First toggle check", "[Gene]")
+    SECTION("Toggle odd bits", "[Gene]")
     {
         testgene.flush();
         for (int m = 0; m < testgene.length(); m++)
@@ -93,15 +81,11 @@ TEST_CASE("Bitwise Gene manipulations", "[Gene]")
         testgene.decode(vals);
         for (int i = 0; i < CLEN; i++)
         {
-            cout << i << " - " << vals[i] << "\n";
-        }
-        for (int i = 0; i < CLEN; i++)
-        {
             REQUIRE(vals[i] == 0x5555);
         }
     }
 
-    SECTION("Second toggle check", "[Gene]")
+    SECTION("Toggle even bits", "[Gene]")
     {
         testgene.flush();
         for (int m = 0; m < testgene.length(); m++)
@@ -112,17 +96,13 @@ TEST_CASE("Bitwise Gene manipulations", "[Gene]")
             }
         }
         testgene.decode(vals);
-        for (int i = 0; i < CLEN; i++)
-        {
-            cout << i << " - " << vals[i] << "\n";
-        }
         for (int i = 0; i < CLEN; i++)
         {
             REQUIRE(vals[i] == 0xaaaa);
         }
     }
 
-    SECTION("Third toggle check", "[Gene]")
+    SECTION("Toggle all bits", "[Gene]")
     {
         testgene.flush();
         for (int m = 0; m < testgene.length(); m++)
@@ -133,10 +113,6 @@ TEST_CASE("Bitwise Gene manipulations", "[Gene]")
             }
         }
         testgene.decode(vals);
-        for (int i = 0; i < CLEN; i++)
-        {
-            cout << i << " - " << vals[i] << "\n";
-        }
         for (int i = 0; i < CLEN; i++)
         {
             REQUIRE(vals[i] == 0xaaaa);
@@ -146,10 +122,6 @@ TEST_CASE("Bitwise Gene manipulations", "[Gene]")
             testgene.toggle(m);
         }
         testgene.decode(vals);
-        for (int i = 0; i < CLEN; i++)
-        {
-            cout << i << " - " << vals[i] << "\n";
-        }
         for (int i = 0; i < CLEN; i++)
         {
             REQUIRE(vals[i] == 0x5555);
