@@ -7,7 +7,7 @@
 #define CLEN 5
 #define GLEN CWIDTH *CLEN
 
-TEST_CASE("Basic Gene manipulations", "[Gene]")
+TEST_CASE("Basic Gene full manipulations", "[Gene]")
 {
     Gene testgene(GLEN);
     unsigned short int vals[CLEN];
@@ -34,6 +34,35 @@ TEST_CASE("Basic Gene manipulations", "[Gene]")
         for (int i = 0; i < CLEN; i++)
         {
             REQUIRE(vals[i] == 65535);
+        }
+    }
+};
+
+TEST_CASE("Bitwise Gene manipulations", "[Gene]")
+{
+    Gene testgene(GLEN);
+    unsigned short int vals[CLEN];
+
+    SECTION("Set 1 bit in each word", "[Gene]")
+    {
+        testgene.flush();
+        // 1
+        testgene.set(0);
+        // 2
+        testgene.set(17);
+        // 3
+        testgene.set(32);
+        testgene.set(33);
+        // 4
+        testgene.set(50);
+        // 5
+        testgene.set(64);
+        testgene.set(66);
+
+        testgene.decode(vals);
+        for (int i = 0; i < CLEN; i++)
+        {
+            REQUIRE(vals[i] == i + 1);
         }
     }
 };
