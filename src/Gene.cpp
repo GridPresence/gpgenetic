@@ -40,7 +40,7 @@ void Gene::decode(unsigned short int (&targ)[5])
         word = 0;
         for (int j = 0; j < 16; j++)
         {
-            word = (word << 1) | m_dna[16 * i + j];
+            word = (word >> 1) | m_dna[16 * i + j];
         }
         targ[i] = word;
     }
