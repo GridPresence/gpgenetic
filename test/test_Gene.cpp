@@ -7,36 +7,33 @@
 #define CLEN 5
 #define GLEN CWIDTH *CLEN
 
-TEST_CASE("Basic Gene length", "[Gene]")
+TEST_CASE("Basic Gene manipulations", "[Gene]")
 {
     Gene testgene(GLEN);
     unsigned short int vals[CLEN];
 
-    REQUIRE(testgene.length() == 80);
-};
-
-TEST_CASE("Basic Gene clear", "[Gene]")
-{
-    Gene testgene(GLEN);
-    unsigned short int vals[CLEN];
-
-    testgene.flush();
-    testgene.decode(vals);
-    for (int i = 0; i < CLEN; i++)
+    SECTION("Set Gene length", "[Gene]")
     {
-        REQUIRE(vals[i] == 0);
+        REQUIRE(testgene.length() == 80);
     }
-};
 
-TEST_CASE("Basic Gene fill", "[Gene]")
-{
-    Gene testgene(GLEN);
-    unsigned short int vals[CLEN];
-
-    testgene.fill();
-    testgene.decode(vals);
-    for (int i = 0; i < CLEN; i++)
+    SECTION("Set Gene clear", "[Gene]")
     {
-        REQUIRE(vals[i] == 65535);
+        testgene.flush();
+        testgene.decode(vals);
+        for (int i = 0; i < CLEN; i++)
+        {
+            REQUIRE(vals[i] == 0);
+        }
+    }
+
+    SECTION("Set Gene fill", "[Gene]")
+    {
+        testgene.fill();
+        testgene.decode(vals);
+        for (int i = 0; i < CLEN; i++)
+        {
+            REQUIRE(vals[i] == 65535);
+        }
     }
 };
