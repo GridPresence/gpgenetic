@@ -38,7 +38,7 @@ void Gene::decode(unsigned short int (&targ)[5])
     for (int i = 0; i < 5; i++)
     {
         word = 0;
-        for (int j = 15; j < 0; j--)
+        for (int j = 15; j >= 0; j--)
         {
             word = (word << 1) | m_dna[16 * i + j];
         }
