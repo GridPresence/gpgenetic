@@ -85,11 +85,10 @@ TEST_CASE("Bitwise Gene manipulations", "[Gene]")
         testgene.flush();
         for (int m = 0; m < testgene.length(); m++)
         {
-            if m
-                % 2 == 0
-                {
-                    testgene.toggle(m);
-                }
+            if (m % 2 == 0)
+            {
+                testgene.toggle(m);
+            }
         }
         testgene.decode(vals);
         for (int i = 0; i < CLEN; i++)
