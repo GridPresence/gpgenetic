@@ -80,7 +80,7 @@ TEST_CASE("Bitwise Gene manipulations", "[Gene]")
         }
         for (int i = 0; i < CLEN; i++)
         {
-            REQUIRE(vals[0] == (i + 1));
+            REQUIRE(vals[i] == (i + 1));
         }
     }
 };
