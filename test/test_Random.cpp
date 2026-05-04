@@ -5,9 +5,6 @@
 // https://github.com/ilqvya/random/blob/master/include/effolkronium/random.hpp
 #include "Random.hpp"
 
-using Random_t = Random;
-#define DOT ::
-
 // get base random alias which is auto seeded and has static API and internal state
 using Random = effolkronium::random_static;
 using Random_t = Random;
