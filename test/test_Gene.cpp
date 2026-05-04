@@ -10,7 +10,8 @@
 TEST_CASE("Basic Gene full manipulations", "[Gene]")
 {
     Gene testgene(GLEN);
-    unsigned short int vals[CLEN];
+    vector<GeneWord> vals;
+    int clen;
 
     SECTION("Set Gene length", "[Gene]")
     {
@@ -21,7 +22,9 @@ TEST_CASE("Basic Gene full manipulations", "[Gene]")
     {
         testgene.flush();
         testgene.decode(vals);
-        for (int i = 0; i < CLEN; i++)
+        clen = vals.size();
+        REQUIRE(clen == CLEN);
+        for (int i = 0; i < clen; i++)
         {
             REQUIRE(vals[i] == 0);
         }
@@ -31,7 +34,9 @@ TEST_CASE("Basic Gene full manipulations", "[Gene]")
     {
         testgene.fill();
         testgene.decode(vals);
-        for (int i = 0; i < CLEN; i++)
+        clen = vals.size();
+        REQUIRE(clen == CLEN);
+        for (int i = 0; i < clen; i++)
         {
             REQUIRE(vals[i] == 65535);
         }
@@ -186,5 +191,5 @@ TEST_CASE("Bitwise Gene manipulations", "[Gene]")
     REQUIRE(geneaa.bits_in_common(gene55) == 0);
 
     Gene child(geneaa, gene55);
-    REQUIRE((child.bits_in_common(geneaa) + child.bits_in_common(gene55)) == 40)
+    REQUIRE((child.bits_in_common(geneaa) + child.bits_in_common(gene55)) == 80)
 };
