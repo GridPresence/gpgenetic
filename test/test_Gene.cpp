@@ -135,6 +135,7 @@ TEST_CASE("Bitwise Gene refactored manipulations", "[Gene]")
 {
     Gene testgene(GLEN);
     vector<GeneWord> vals;
+    int clen;
 
     SECTION("Set 1 bit in each word", "[Gene]")
     {
