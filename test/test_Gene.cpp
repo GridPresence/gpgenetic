@@ -191,5 +191,5 @@ TEST_CASE("Bitwise Gene manipulations", "[Gene]")
     REQUIRE(geneaa.bits_in_common(gene55) == 0);
 
     Gene child(geneaa, gene55);
-    REQUIRE((child.bits_in_common(geneaa) + child.bits_in_common(gene55)) == 80)
+    REQUIRE((child.bits_in_common(geneaa) + child.bits_in_common(gene55)) == 80);
 };
