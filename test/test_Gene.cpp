@@ -148,7 +148,7 @@ TEST_CASE("Bitwise Gene manipulations", "[Gene]")
     }
 };
 
-TEST_CASE("Bitwise Gene manipulations", "[Gene]")
+TEST_CASE("Breeding Gene tests", "[Gene]")
 {
     vector<GeneWord> vals;
     int clen;
