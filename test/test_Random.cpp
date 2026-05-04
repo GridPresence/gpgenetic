@@ -1,5 +1,7 @@
 #include <catch2/catch_test_macros.hpp>
-#include "catch.hpp"
+
+#define RANDOM_STATIC 1
+
 #include <limits>
 #include <sstream>
 #include <array>
@@ -14,9 +16,6 @@
 #include "current_random.hpp"
 
 // get base random alias which is auto seeded and has static API and internal state
-using Random = effolkronium::random_static;
-using Random_t = Random;
-#define DOT ::
 
 TEST_CASE("Range overflow for random integer numbers")
 {
