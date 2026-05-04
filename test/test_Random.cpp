@@ -1,5 +1,5 @@
 #include <catch2/catch_test_macros.hpp>
-
+#include "catch.hpp"
 #include <limits>
 #include <sstream>
 #include <array>
@@ -11,7 +11,7 @@
 
 // Installed from
 // https://github.com/ilqvya/random/blob/master/include/effolkronium/random.hpp
-#include "Random.hpp"
+#include "current_random.hpp"
 
 // get base random alias which is auto seeded and has static API and internal state
 using Random = effolkronium::random_static;
