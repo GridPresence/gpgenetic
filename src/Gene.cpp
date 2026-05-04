@@ -3,6 +3,8 @@
 Gene::Gene(int length) : m_length(length)
 {
     m_dna.resize(m_length);
+    m_wwidth = 8 * sizeof(GeneWord);
+    m_wnum = m_length / m_wwidth;
 };
 
 Gene::~Gene()
@@ -31,9 +33,9 @@ void Gene::fill()
     }
 };
 
-void Gene::decode(unsigned short int (&targ)[5])
+void Gene::decode(GeneWord (&targ)[5])
 {
-    unsigned short int word;
+    GeneWord word;
 
     for (int i = 0; i < 5; i++)
     {
@@ -43,5 +45,23 @@ void Gene::decode(unsigned short int (&targ)[5])
             word = (word << 1) | m_dna[16 * i + j];
         }
         targ[i] = word;
+    }
+};
+
+void Gene::decode(vector<GeneWord> &targ)
+{
+    GeneWord word;
+
+    // Empty the vector
+    targ.clear();
+
+    for (int i = 0; i < m_wnum; i++)
+    {
+        word = 0;
+        for (int j = m_wwidth; j >= 0; j--)
+        {
+            word = (word << 1) | m_dna[m_wwidth * i + j];
+        }
+        targ.push_back(word);
     }
 };

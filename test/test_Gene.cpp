@@ -44,7 +44,7 @@ TEST_CASE("Bitwise Gene manipulations", "[Gene]")
     Gene testgene(GLEN);
     unsigned short int vals[CLEN];
 
-    SECTION("Set 1 bit in first word", "[Gene]")
+    SECTION("Set 1 bit in each word", "[Gene]")
     {
         testgene.flush();
         testgene.decode(vals);
@@ -125,6 +125,110 @@ TEST_CASE("Bitwise Gene manipulations", "[Gene]")
         }
         testgene.decode(vals);
         for (int i = 0; i < CLEN; i++)
+        {
+            REQUIRE(vals[i] == 0x5555);
+        }
+    }
+};
+
+TEST_CASE("Bitwise Gene refactored manipulations", "[Gene]")
+{
+    Gene testgene(GLEN);
+    vector<GeneWord> vals;
+
+    SECTION("Set 1 bit in each word", "[Gene]")
+    {
+        testgene.flush();
+        testgene.decode(vals);
+        // 1
+        testgene.set(0);
+        // 2
+        testgene.set(17);
+        // 3
+        testgene.set(32);
+        testgene.set(33);
+        // 4
+        testgene.set(50);
+        // 5
+        testgene.set(64);
+        testgene.set(66);
+
+        testgene.decode(vals);
+        clen = vals.size();
+        REQUIRE(clen == CLEN);
+
+        for (int i = 0; i < clen; i++)
+        {
+            REQUIRE(vals[i] == (i + 1));
+        }
+    }
+
+    SECTION("Toggle odd bits", "[Gene]")
+    {
+        testgene.flush();
+        for (int m = 0; m < testgene.length(); m++)
+        {
+            if (m % 2 == 0)
+            {
+                testgene.toggle(m);
+            }
+        }
+        testgene.decode(vals);
+        clen = vals.size();
+        REQUIRE(clen == CLEN);
+
+        for (int i = 0; i < clen; i++)
+        {
+            REQUIRE(vals[i] == 0x5555);
+        }
+    }
+
+    SECTION("Toggle even bits", "[Gene]")
+    {
+        testgene.flush();
+        for (int m = 0; m < testgene.length(); m++)
+        {
+            if (m % 2 == 1)
+            {
+                testgene.toggle(m);
+            }
+        }
+        testgene.decode(vals);
+        clen = vals.size();
+        REQUIRE(clen == CLEN);
+        for (int i = 0; i < clen; i++)
+        {
+            REQUIRE(vals[i] == 0xaaaa);
+        }
+    }
+
+    SECTION("Toggle all bits", "[Gene]")
+    {
+        testgene.flush();
+        for (int m = 0; m < testgene.length(); m++)
+        {
+            if (m % 2 == 1)
+            {
+                testgene.toggle(m);
+            }
+        }
+
+        testgene.decode(vals);
+        clen = vals.size();
+        REQUIRE(clen == CLEN);
+        for (int i = 0; i < clen; i++)
+        {
+            REQUIRE(vals[i] == 0xaaaa);
+        }
+
+        for (int m = 0; m < testgene.length(); m++)
+        {
+            testgene.toggle(m);
+        }
+        testgene.decode(vals);
+        clen = vals.size();
+        REQUIRE(clen == CLEN);
+        for (int i = 0; i < clen; i++)
         {
             REQUIRE(vals[i] == 0x5555);
         }

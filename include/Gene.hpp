@@ -2,18 +2,23 @@
 
 using namespace std;
 
+using GeneWord = unsigned short int;
+
 class Gene
 {
 private:
     vector<int> m_dna;
     int m_length = 0;
+    int m_wwidth = 8 * sizeof(GeneWord);
+    int m_wnum = m_length / m_wwidth;
 
 public:
     Gene(int length);
     ~Gene();
 
     int length();
-    void decode(unsigned short int (&targ)[5]);
+    void decode(GeneWord (&targ)[5]);
+    void decode(vector<GeneWord> &targ);
 
     void set(int idx);
     void unset(int idx);
