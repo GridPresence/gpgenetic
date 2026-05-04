@@ -1,4 +1,12 @@
 #include <catch2/catch_test_macros.hpp>
+
+#include <limits>
+#include <sstream>
+#include <array>
+#include <thread>
+#include <vector>
+#include <map>
+#include <unordered_map>
 #include <iostream>
 
 // Installed from
