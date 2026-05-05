@@ -46,11 +46,6 @@ Gene::~Gene()
     m_dna.clear();
 };
 
-int Gene::length()
-{
-    return m_length;
-};
-
 void Gene::flush()
 {
     for (int i = 0; i < m_length; i++)
@@ -73,14 +68,16 @@ void Gene::decode(vector<GeneWord> &targ)
 
     // Empty the vector
     targ.clear();
-
+    // For each word
     for (int i = 0; i < m_wnum; i++)
     {
         word = 0;
+        // For each bit in msb->lsb order
         for (int j = m_wwidth; j >= 0; j--)
         {
             word = (word << 1) | m_dna[m_wwidth * i + j];
         }
+        // Push the word onto the bottom of the output list
         targ.push_back(word);
     }
 };
@@ -88,9 +85,10 @@ void Gene::decode(vector<GeneWord> &targ)
 int Gene::bits_in_common(Gene &src)
 {
     int retval = 0;
-
+    // For every bit in each Gene
     for (int i = 0; i < m_length; i++)
     {
+        // Compare and count
         if (m_dna[i] == src[i])
         {
             retval++;
@@ -98,3 +96,22 @@ int Gene::bits_in_common(Gene &src)
     }
     return retval;
 }
+
+void Gene::mutate(float probability)
+{
+    // Throw of the die
+    auto check = Random::get(0.f, 1.f);
+    // If it's a valid mutation event
+    if (check <= probability)
+    {
+        // Arbitrarily toggle a random bit
+        auto bitidx = Random::get(0, m_length - 1);
+        toggle(bitidx);
+    }
+};
+
+void Gene::mutate(void)
+{
+    // Shortform default 1% probability
+    mutate(0.01);
+};

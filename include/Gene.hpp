@@ -21,9 +21,6 @@ public:
     ~Gene();
 
     int length();
-
-    void decode(vector<GeneWord> &targ);
-
     void set(int idx);
     void unset(int idx);
     void toggle(int idx);
@@ -32,10 +29,18 @@ public:
     void flush();
     void fill();
 
+    void decode(vector<GeneWord> &targ);
+    void mutate(void);
+    void mutate(float probability);
     int bits_in_common(Gene &src);
 
 private:
     void rescale();
+};
+
+inline int Gene::length()
+{
+    return m_length;
 };
 
 inline void Gene::set(int idx)
