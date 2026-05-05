@@ -10,33 +10,33 @@ Gene::Gene(int length) : m_length(length)
 
 Gene::Gene(Gene &prnt1, Gene &prnt2)
 {
-    if (prnt1.length() == prnt2.length())
+    auto fptp = Random::get(1, 2);
+    if (fptp == 1)
+    {
+        m_length = prnt2.length();
+        rescale();
+        auto val = Random::get(1, m_length - 2);
+        for (int i = 0; i < val; i++)
+        {
+            m_dna[i] = prnt1[i];
+        }
+        for (int i = val; i < m_length; i++)
+        {
+            m_dna[i] = prnt2[i];
+        }
+    }
+    else
     {
         m_length = prnt1.length();
         rescale();
         auto val = Random::get(1, m_length - 2);
-        auto fptp = Random::get(1, 2);
-        if (fptp == 1)
+        for (int i = 0; i < val; i++)
         {
-            for (int i = 0; i < val; i++)
-            {
-                m_dna[i] = prnt1[i];
-            }
-            for (int i = val; i < m_length; i++)
-            {
-                m_dna[i] = prnt2[i];
-            }
+            m_dna[i] = prnt2[i];
         }
-        else
+        for (int i = val; i < m_length; i++)
         {
-            for (int i = 0; i < val; i++)
-            {
-                m_dna[i] = prnt2[i];
-            }
-            for (int i = val; i < m_length; i++)
-            {
-                m_dna[i] = prnt1[i];
-            }
+            m_dna[i] = prnt1[i];
         }
     }
 };
