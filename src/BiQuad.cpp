@@ -8,7 +8,7 @@ double BiQuad::process(double in)
     return out;
 };
 
-void BiQuad::BiQuad(Coefficients coeffs)
+void BiQuad::BiQuad(Coefficients& coeffs)
 {
     z1 = 0.0;
     z2 = 0.0;

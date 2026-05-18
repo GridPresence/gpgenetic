@@ -1,11 +1,11 @@
 #include <vector>
 
-using Coefficients = vector<double>;
+using Coefficients = std::vector<double>;
 
 class FilterStage
 {
 private:
 public:
-    double process(double sample) = 0;
-    void load(Coefficients coeffs) = 0;
+    virtual double process(double sample) = 0;
+    virtual void load(Coefficients& coeffs) = 0;
 };

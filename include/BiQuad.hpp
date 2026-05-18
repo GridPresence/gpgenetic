@@ -8,6 +8,6 @@ private:
     double z1, z2;
 
 public:
-    BiQuad(Coefficients spec);
+    BiQuad(Coefficients& spec);
     double process(double sample);
 };
