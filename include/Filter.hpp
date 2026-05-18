@@ -1,30 +1,17 @@
 #include <vector>
+#include "FilterStage.hpp"
 
 using namespace std;
 
-using Stage = vector<double>;
-using Coefficients = vector<Stage*>;
-
 class Filter
 {
-protected:
-    Filter* m_next = nullptr;
-    double m_result = 0.0;
+private:
+    int m_limit;
+    vector<FilterStage *> m_stages;
 
 public:
-    virtual void process(double sample) = 0;
+    void Filter(int stages);
+    double process(double sample);
 
-    double result();
-    void attach(Filter* stage);
-};
-
-
-inline double Filter::result()
-{
-    return m_result;
-};
-
-inline void Filter::attach(Filter* stage)
-{
-    m_next = stage;
+    void attach(FilterStage *stage);
 };
