@@ -40,5 +40,8 @@
 # debug information files
 *.dwo
 
+# ignore all files in any directory named build
+build/
+
 # MacOS detritus
 .DS_Store
