@@ -2,7 +2,7 @@
 
 Filter::Filter(int stages)
 {
-    m_stages = stages;
+    m_limit = stages;
     m_count = 0;
 };
 
@@ -19,9 +19,9 @@ double Filter::process(double sample)
     int steps = m_stages.size();
     double retval = 0.0;
 
-    for (int i = 0; i < steps, i++)
+    for (int i = 0; i < steps; i++)
     {
-        retval = m_stage[i]->process(retval);
+        retval = m_stages[i]->process(retval);
     }
     return retval;
 };

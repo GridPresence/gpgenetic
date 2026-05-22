@@ -7,10 +7,11 @@ class Filter
 {
 private:
     int m_limit;
+    int m_count;
     vector<FilterStage *> m_stages;
 
 public:
-    void Filter(int stages);
+    Filter(int stages);
     double process(double sample);
 
     void attach(FilterStage *stage);
