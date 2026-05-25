@@ -1,22 +1,15 @@
 #include <string>
 #include <map>
 
-#include <nlohmann/json.hpp>
+using Response = std::map<int, double>;
 
-using json = nlohmann::json;
-using Response = std::map<double, double>;
-
-namespace ns
+class Context
 {
-    class Context
-    {
-    private:
-        int stages;
-        int sample_rate;
-        Response frequency_response;
+private:
+    int stages;
+    int sample_rate;
+    Response frequency_response;
 
-    public:
-        Context(std::string &config);
-        NLOHMANN_DEFINE_TYPE_INTRUSIVE(Context, stages, sample_rate, frequency_response);
-    };
-}
+public:
+    Context(std::string &config);
+};

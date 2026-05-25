@@ -1,6 +1,6 @@
 #include <fstream>
 #include "Context.hpp"
 
-ns::Context::Context(std::string &config) {
+Context::Context(std::string &config) {
 
 };

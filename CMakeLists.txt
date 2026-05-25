@@ -3,8 +3,6 @@ project(GPGenetic)
 
 find_package(Catch2 3 REQUIRED)
 
-find_package(nlohmann_json 3.12.0 REQUIRED)
-
 include(CTest)
 include(Catch)
 include(GNUInstallDirs)
