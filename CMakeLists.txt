@@ -36,4 +36,4 @@ target_link_libraries(gpgenetic-test PUBLIC gpgenetic PRIVATE Catch2::Catch2With
 
 catch_discover_tests(gpgenetic-test)
 
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/test/test01.json, ${CMAKE_CURRENT_BINARY_DIR}, COPYONLY)
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/test/test01.json ${CMAKE_CURRENT_BINARY_DIR}, COPYONLY)
