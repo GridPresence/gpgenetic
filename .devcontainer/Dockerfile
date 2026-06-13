@@ -16,6 +16,9 @@ RUN apt-get -y update; apt-get -y upgrade
 COPY packages.txt /tmp/packages.txt
 RUN xargs apt-get -y install < /tmp/packages.txt
 
+COPY kpush /tmp/kpush
+RUN install /tmp/kpush /usr/local/bin/kpush
+
 RUN adduser \
     --disabled-password \
     --gecos "" \

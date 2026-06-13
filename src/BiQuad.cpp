@@ -2,22 +2,26 @@
 
 double BiQuad::process(double in)
 {
-    double out = in * b0 + z1;
-    z1 = in * b1 + z2 - a1 * out;
-    z2 = in * b2 - a2 * out;
+    double out = in * m_b0 + m_z1;
+    m_z1 = in * m_b1 + m_z2 - m_a1 * out;
+    m_z2 = in * m_b2 - m_a2 * out;
     return out;
 };
 
 BiQuad::BiQuad(Coefficients& coeffs)
 {
-    z1 = 0.0;
-    z2 = 0.0;
     if (coeffs.size() == 5)
     {
-        a1 = coeffs[0];
-        a2 = coeffs[1];
-        b0 = coeffs[2];
-        b1 = coeffs[3];
-        b2 = coeffs[4];
+        m_a1 = coeffs[0];
+        m_a2 = coeffs[1];
+        m_b0 = coeffs[2];
+        m_b1 = coeffs[3];
+        m_b2 = coeffs[4];
     }
 };
+
+double BiQuad::response(double rads)
+{
+    double retval = 0.0;
+    return retval;
+}
