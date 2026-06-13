@@ -11,6 +11,9 @@ ENV UID=1234
 RUN rm /bin/sh ; \
     ln -s /bin/bash /bin/sh
 
+# Setting the Ubuntu default timezone
+RUN ln -sf /usr/share/zoneinfo/Europe/London /etc/localtime
+
 # Basic package set
 RUN apt-get -y update; apt-get -y upgrade
 COPY packages.txt /tmp/packages.txt
