@@ -15,5 +15,13 @@ TEST_CASE("Basic JSON file read and parse", "[Json]")
     Document d;
     d.ParseStream(is);
 
+    SECTION("Get JSON elements", "[Json]")
+    {
+        REQUIRE(d.HasMember("fsamp"));
+        REQUIRE(d["fsamp"].IsInt());
+        REQUIRE(d["fsamp"].GetInt() == 44100);
+
+    }
+
     fclose(fp);
 };
