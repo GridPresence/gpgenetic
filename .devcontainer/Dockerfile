@@ -28,8 +28,16 @@ WORKDIR $NEWHOME
 # Create host FS mount point
 RUN mkdir -p $NEWHOME/work
 RUN chown -R $SERVICE_NAME:$SERVICE_NAME $NEWHOME
+
+RUN mkdir -p $NEWHOME/.ssh
+COPY .ssh/config $NEWHOME/.ssh/config
+COPY .ssh/gridp_ed25519.pub $NEWHOME/.ssh/gridp_ed25519.pub
+COPY .ssh/gridp_ed25519 $NEWHOME/.ssh/gridp_ed25519
+RUN chown -R $SERVICE_NAME:$SERVICE_NAME $NEWHOME/.ssh
+
 WORKDIR $NEWHOME/work
 # Don't want to run as root
 USER $SERVICE_NAME
+RUN chmod 400 $NEWHOME/.ssh/gridp_ed25519
 
 # CMD ["bash", "dexecute"]

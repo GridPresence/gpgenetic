@@ -42,6 +42,8 @@
 
 # ignore all files in any directory named build
 build/
+.ssh/
+
 
 # MacOS detritus
 .DS_Store
