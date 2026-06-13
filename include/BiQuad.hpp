@@ -10,9 +10,10 @@ private:
     double m_b2 = 0.0;
     double m_z1 = 0.0;
     double m_z2 = 0.0;
+    double m_fsamp = 44100.0;
 
 public:
     BiQuad(Coefficients& spec);
     double process(double sample);
-    double response(double rads);
+    double response(double freq);
 };
