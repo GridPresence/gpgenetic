@@ -13,6 +13,7 @@ private:
     int m_length = 0;
 
     int m_wnum = 0;
+    double m_fitness = 0.0;
 
 public:
     Gene(int length);
@@ -33,6 +34,9 @@ public:
     void mutate(void);
     void mutate(float probability);
     int bits_in_common(Gene &src);
+
+    double fitness();
+    void fitness(double val);
 
 private:
     void rescale();
@@ -68,3 +72,13 @@ inline void Gene::rescale()
     m_dna.resize(m_length);
     m_wnum = m_dna.size() / m_wwidth;
 }
+
+inline double Gene::fitness()
+{
+    return m_fitness;
+};
+
+inline void Gene::fitness(double val)
+{
+    m_fitness = val;
+};
