@@ -7,6 +7,7 @@ ENV SERVICE_NAME="development"
 ENV NEWHOME=/home/$SERVICE_NAME
 ENV UID=1234
 
+
 # Repairing the Ubuntu default shell as bash
 RUN rm /bin/sh ; \
     ln -s /bin/bash /bin/sh
