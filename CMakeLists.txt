@@ -9,6 +9,8 @@ include(GNUInstallDirs)
 
 file(GLOB_RECURSE lib_SOURCES "src/*.cpp")
 file(GLOB_RECURSE test_SOURCES "test/*.cpp")
+file(GLOB_RECURSE evapp_SOURCES "app/evolve-iir.cpp")
+file(GLOB_RECURSE sarge_SOURCES "app/sarge-test.cpp")
 
 include_directories("${CMAKE_SOURCE_DIR}/include")
 
@@ -37,3 +39,9 @@ target_link_libraries(gpgenetic-test PUBLIC gpgenetic PRIVATE Catch2::Catch2With
 catch_discover_tests(gpgenetic-test)
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/test/test01.json ${CMAKE_CURRENT_BINARY_DIR}/test01.json COPYONLY)
+
+add_executable(sarge-test ${sarge_SOURCES})
+target_link_libraries(sarge-test PUBLIC gpgenetic)
+
+add_executable(evolve-iir ${evapp_SOURCES})
+target_link_libraries(evolve-iir PUBLIC gpgenetic)
