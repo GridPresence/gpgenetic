@@ -2,6 +2,7 @@
 #include "rapidjson/filereadstream.h"
 #include <cstdio>
 #include <vector>
+#include <cmath>
 
 #include "Context.hpp"
 
@@ -52,17 +53,35 @@ Context::Context(std::string &config)
     d.ParseStream(is);
     if (this->IsValid(d))
     {
+        m_sample_rate = d["fsamp"].GetDouble();
+        m_stages = d["stages"].GetInt();
         for (SizeType i = 0; i < d["freqs"].Size(); i++)
         {
-            frequencies.push_back(d["freqs"][i].GetDouble());
+            m_frequencies.push_back(d["freqs"][i].GetDouble());
         }
         for (SizeType i = 0; i < d["bode"].Size(); i++)
         {
-            decibels.push_back(d["bode"][i].GetDouble());
+            m_decibels.push_back(d["bode"][i].GetDouble());
         }
-        if (decibels.size() != frequencies.size())
+        if (m_decibels.size() != m_frequencies.size())
         {
             throw ContextException("Unequal datapoints in bode specification");
         }
     }
+    this->linearise_bode();
+};
+
+void Context::linearise_bode()
+{
+    int scope = m_frequencies.size();
+    for (int i = 0; i < scope; i++)
+    {
+        m_normalised_frequencies.push_back(2.0 * M_PI * m_frequencies[i] / m_sample_rate);
+        m_linear_responses.push_back(pow(10.0, (0.05 * m_decibels[i])));
+    }
+};
+
+void Context::enbode()
+{
+
 };

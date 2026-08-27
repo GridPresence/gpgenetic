@@ -37,5 +37,13 @@ int main(int argc, char* argv[])
 
     Context context(infile);
 
+	int scope = context.freqs().size();
+	for(int i = 0; i < scope; i++)
+	{
+		std::cout << context.freqs()[i] << "\t" << context.dbs()[i] 
+		<< "\t" << context.omegas()[i] << "\t" << context.response()[i]
+		<< std::endl;
+	}
+
     return 0;
 }
